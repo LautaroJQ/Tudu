@@ -9,6 +9,32 @@ import (
 	"strconv"
 )
 
+func DeleteTaskHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "application/json")
+	var dto dtos.DeleteTaskRequest
+	id, err := strconv.Atoi(r.PathValue("id"))
+
+	if err != nil {
+		http.Error(w, "Cannot parse id", http.StatusBadRequest)
+		return
+	}
+
+	dto.Id = id
+
+	err = database.DeleteTasks(dto.Id)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = json.NewEncoder(w).Encode("Task succesfully deleted")
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
 func GetTasksHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 

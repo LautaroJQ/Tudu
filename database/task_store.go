@@ -9,6 +9,46 @@ import (
 	"time"
 )
 
+func DeleteTasks(id int) error {
+
+	FILENAME := os.Getenv("FILENAME")
+
+	fileData, err := os.ReadFile(FILENAME)
+
+	if err != nil {
+		return err
+	}
+	tasks := []models.Task{}
+
+	err = json.Unmarshal(fileData, &tasks)
+
+	if err != nil {
+		return err
+	}
+
+	result := []models.Task{}
+
+	for _, task := range tasks {
+		if task.ID != id {
+			result = append(result, task)
+		}
+	}
+
+	fileData, err = json.MarshalIndent(result, "", "\t")
+
+	if err != nil {
+		return err
+	}
+
+	err = os.WriteFile(FILENAME, fileData, 0644)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func GetTasks(done *bool) ([]models.Task, error) {
 	FILENAME := os.Getenv("FILENAME")
 

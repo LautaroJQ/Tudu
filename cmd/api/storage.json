@@ -1,0 +1,296 @@
+[
+	{
+		"ID": 2,
+		"Title": "Leer sobre net/http",
+		"Done": false,
+		"CreatedAt": "2026-10-01T10:15:00-03:00"
+	},
+	{
+		"ID": 3,
+		"Title": "Implementar endpoint GET /tasks",
+		"Done": true,
+		"CreatedAt": "2026-10-01T11:30:00-03:00"
+	},
+	{
+		"ID": 4,
+		"Title": "Implementar endpoint POST /tasks",
+		"Done": false,
+		"CreatedAt": "2026-10-01T12:00:00-03:00"
+	},
+	{
+		"ID": 5,
+		"Title": "Validar datos de entrada",
+		"Done": false,
+		"CreatedAt": "2026-10-01T14:20:00-03:00"
+	},
+	{
+		"ID": 6,
+		"Title": "Agregar manejo de errores",
+		"Done": true,
+		"CreatedAt": "2026-10-02T08:45:00-03:00"
+	},
+	{
+		"ID": 7,
+		"Title": "Implementar endpoint GET /tasks/{id}",
+		"Done": false,
+		"CreatedAt": "2026-10-02T09:30:00-03:00"
+	},
+	{
+		"ID": 8,
+		"Title": "Implementar endpoint PUT /tasks/{id}",
+		"Done": false,
+		"CreatedAt": "2026-10-02T10:00:00-03:00"
+	},
+	{
+		"ID": 9,
+		"Title": "Implementar endpoint DELETE /tasks/{id}",
+		"Done": true,
+		"CreatedAt": "2026-10-02T11:15:00-03:00"
+	},
+	{
+		"ID": 10,
+		"Title": "Refactorizar el almacenamiento JSON",
+		"Done": false,
+		"CreatedAt": "2026-10-02T13:00:00-03:00"
+	},
+	{
+		"ID": 11,
+		"Title": "Repasar estructuras y métodos",
+		"Done": true,
+		"CreatedAt": "2026-10-03T08:00:00-03:00"
+	},
+	{
+		"ID": 12,
+		"Title": "Practicar slices en Go",
+		"Done": false,
+		"CreatedAt": "2026-10-03T09:10:00-03:00"
+	},
+	{
+		"ID": 13,
+		"Title": "Investigar interfaces",
+		"Done": false,
+		"CreatedAt": "2026-10-03T10:45:00-03:00"
+	},
+	{
+		"ID": 14,
+		"Title": "Escribir tests unitarios",
+		"Done": true,
+		"CreatedAt": "2026-10-03T12:30:00-03:00"
+	},
+	{
+		"ID": 15,
+		"Title": "Probar respuestas HTTP",
+		"Done": false,
+		"CreatedAt": "2026-10-03T15:00:00-03:00"
+	},
+	{
+		"ID": 16,
+		"Title": "Configurar Git",
+		"Done": true,
+		"CreatedAt": "2026-10-04T08:20:00-03:00"
+	},
+	{
+		"ID": 17,
+		"Title": "Crear una rama para una funcionalidad",
+		"Done": true,
+		"CreatedAt": "2026-10-04T09:00:00-03:00"
+	},
+	{
+		"ID": 18,
+		"Title": "Actualizar el README",
+		"Done": false,
+		"CreatedAt": "2026-10-04T10:30:00-03:00"
+	},
+	{
+		"ID": 19,
+		"Title": "Documentar los endpoints",
+		"Done": false,
+		"CreatedAt": "2026-10-04T11:40:00-03:00"
+	},
+	{
+		"ID": 20,
+		"Title": "Revisar convenciones de nombres",
+		"Done": true,
+		"CreatedAt": "2026-10-04T14:15:00-03:00"
+	},
+	{
+		"ID": 21,
+		"Title": "Estudiar consultas SQL",
+		"Done": false,
+		"CreatedAt": "2026-10-05T08:00:00-03:00"
+	},
+	{
+		"ID": 22,
+		"Title": "Crear tabla de tareas",
+		"Done": true,
+		"CreatedAt": "2026-10-05T09:25:00-03:00"
+	},
+	{
+		"ID": 23,
+		"Title": "Conectar Go con SQLite",
+		"Done": false,
+		"CreatedAt": "2026-10-05T10:50:00-03:00"
+	},
+	{
+		"ID": 24,
+		"Title": "Implementar repositorio de tareas",
+		"Done": false,
+		"CreatedAt": "2026-10-05T12:10:00-03:00"
+	},
+	{
+		"ID": 25,
+		"Title": "Separar handlers de la lógica de negocio",
+		"Done": true,
+		"CreatedAt": "2026-10-05T14:45:00-03:00"
+	},
+	{
+		"ID": 26,
+		"Title": "Aprender sobre punteros",
+		"Done": false,
+		"CreatedAt": "2026-10-06T08:30:00-03:00"
+	},
+	{
+		"ID": 27,
+		"Title": "Practicar manejo de errores",
+		"Done": true,
+		"CreatedAt": "2026-10-06T09:15:00-03:00"
+	},
+	{
+		"ID": 28,
+		"Title": "Investigar context.Context",
+		"Done": false,
+		"CreatedAt": "2026-10-06T10:00:00-03:00"
+	},
+	{
+		"ID": 29,
+		"Title": "Implementar middleware de logging",
+		"Done": false,
+		"CreatedAt": "2026-10-06T11:20:00-03:00"
+	},
+	{
+		"ID": 30,
+		"Title": "Agregar configuración por variables de entorno",
+		"Done": true,
+		"CreatedAt": "2026-10-06T13:50:00-03:00"
+	},
+	{
+		"ID": 31,
+		"Title": "Resolver ejercicios de algoritmos",
+		"Done": false,
+		"CreatedAt": "2026-10-07T08:10:00-03:00"
+	},
+	{
+		"ID": 32,
+		"Title": "Estudiar complejidad temporal",
+		"Done": true,
+		"CreatedAt": "2026-10-07T09:40:00-03:00"
+	},
+	{
+		"ID": 33,
+		"Title": "Repasar mapas en Go",
+		"Done": false,
+		"CreatedAt": "2026-10-07T10:25:00-03:00"
+	},
+	{
+		"ID": 34,
+		"Title": "Implementar búsqueda por título",
+		"Done": false,
+		"CreatedAt": "2026-10-07T12:00:00-03:00"
+	},
+	{
+		"ID": 35,
+		"Title": "Agregar filtros por estado",
+		"Done": true,
+		"CreatedAt": "2026-10-07T14:30:00-03:00"
+	},
+	{
+		"ID": 36,
+		"Title": "Estudiar paginación en APIs",
+		"Done": false,
+		"CreatedAt": "2026-10-08T08:00:00-03:00"
+	},
+	{
+		"ID": 37,
+		"Title": "Implementar paginación",
+		"Done": false,
+		"CreatedAt": "2026-10-08T09:35:00-03:00"
+	},
+	{
+		"ID": 38,
+		"Title": "Revisar códigos de estado HTTP",
+		"Done": true,
+		"CreatedAt": "2026-10-08T10:45:00-03:00"
+	},
+	{
+		"ID": 39,
+		"Title": "Probar solicitudes con curl",
+		"Done": false,
+		"CreatedAt": "2026-10-08T11:50:00-03:00"
+	},
+	{
+		"ID": 40,
+		"Title": "Configurar Docker",
+		"Done": false,
+		"CreatedAt": "2026-10-08T14:00:00-03:00"
+	},
+	{
+		"ID": 41,
+		"Title": "Crear Dockerfile",
+		"Done": true,
+		"CreatedAt": "2026-10-09T08:15:00-03:00"
+	},
+	{
+		"ID": 42,
+		"Title": "Estudiar variables de entorno",
+		"Done": false,
+		"CreatedAt": "2026-10-09T09:45:00-03:00"
+	},
+	{
+		"ID": 43,
+		"Title": "Revisar arquitectura por capas",
+		"Done": true,
+		"CreatedAt": "2026-10-09T10:30:00-03:00"
+	},
+	{
+		"ID": 44,
+		"Title": "Mejorar nombres de funciones",
+		"Done": false,
+		"CreatedAt": "2026-10-09T12:20:00-03:00"
+	},
+	{
+		"ID": 45,
+		"Title": "Eliminar código duplicado",
+		"Done": false,
+		"CreatedAt": "2026-10-09T14:10:00-03:00"
+	},
+	{
+		"ID": 46,
+		"Title": "Preparar demo de la API",
+		"Done": true,
+		"CreatedAt": "2026-10-10T08:30:00-03:00"
+	},
+	{
+		"ID": 47,
+		"Title": "Revisar casos límite",
+		"Done": false,
+		"CreatedAt": "2026-10-10T09:50:00-03:00"
+	},
+	{
+		"ID": 48,
+		"Title": "Corregir errores encontrados en tests",
+		"Done": false,
+		"CreatedAt": "2026-10-10T11:00:00-03:00"
+	},
+	{
+		"ID": 49,
+		"Title": "Actualizar dependencias",
+		"Done": true,
+		"CreatedAt": "2026-10-11T10:00:00-03:00"
+	},
+	{
+		"ID": 50,
+		"Title": "Revisar el proyecto antes de publicarlo",
+		"Done": false,
+		"CreatedAt": "2026-10-12T16:00:00-03:00"
+	}
+]

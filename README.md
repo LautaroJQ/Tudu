@@ -39,7 +39,7 @@ todo-api/
 - POST /tasks -> Crear tareas
 - GET /tasks -> Listar tareas (Query params: ?done=&limit=&offset=) done para filtrar por hechas o no hechas, limit para la cantidad de registros y offset para saber desde donde empezar
 - PATCH /tasks/{id} -> Modificar una tarea parcialmente 
-- 
+- DELETE /tasks/{id}
 
 # Anotaciones
 
