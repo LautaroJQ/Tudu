@@ -3,10 +3,89 @@ package handlers
 import (
 	"ToDo/database"
 	"ToDo/dtos"
+	"ToDo/models"
 	"encoding/json"
 	"net/http"
 	"strconv"
 )
+
+func GetTasksHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "application/json")
+
+	// Query params: ?done=&limit=&offset=
+
+	doneParam := r.URL.Query().Get("done")
+	var donePtr *bool
+	if doneParam != "" {
+		v, err := strconv.ParseBool(doneParam)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		donePtr = &v
+	}
+
+	tasks, err := database.GetTasks(donePtr)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	offsetParam := r.URL.Query().Get("offset")
+	var offset int
+
+	if offsetParam != "" {
+		offset, err = strconv.Atoi(offsetParam)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+	} else {
+		offset = 0
+	}
+
+	if offset < 0 {
+		http.Error(w, "Cannot have an offset less than zero", http.StatusBadRequest)
+		return
+	}
+
+	if offset >= len(tasks) {
+		json.NewEncoder(w).Encode(models.Task{})
+	}
+
+	limitParam := r.URL.Query().Get("limit")
+	var limit int
+
+	if limitParam != "" {
+		limit, err = strconv.Atoi(limitParam)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+	} else {
+		limit = 5
+	}
+
+	if limit <= 0 {
+		http.Error(w, "Cannot have an limit equal or less than zero", http.StatusBadRequest)
+		return
+	}
+
+	end := min(offset+limit, len(tasks))
+	filteredTasks := []models.Task{}
+	filteredTasks = append(filteredTasks, tasks[offset:end]...)
+
+	err = json.NewEncoder(w).Encode(filteredTasks)
+
+	if err != nil {
+		http.Error(w, "Error ocurred during listing", http.StatusInternalServerError)
+	}
+}
 
 func EditTaskHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
@@ -23,14 +102,17 @@ func EditTaskHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	taskRequest := dtos.EditTaskRequest{Title: r.URL.Query().Get("title")}
+	taskRequest := dtos.EditTaskRequest{
+		Id:    id,
+		Title: r.URL.Query().Get("title"),
+	}
 
 	if taskRequest.Title == "" {
 		http.Error(w, "Task titlte should not be an empty string", http.StatusBadRequest)
 		return
 	}
 
-	task, err := database.EditTask(id, taskRequest.Title)
+	task, err := database.EditTask(taskRequest.Id, taskRequest.Title)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

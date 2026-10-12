@@ -28,7 +28,7 @@ todo-api/
 │   ├── database/
 │   │   └── task_store.go      
 │   ├── handlers/ -> Logica de negocio
-│   │   └── task_controller.go 
+│   │   └── task_handler.go 
 │   └── routers/
 │       └── task_router.go -> Elije a donde va la request
 ├── go.mod
@@ -37,11 +37,11 @@ todo-api/
 ## Endpoints
 
 - POST /tasks -> Crear tareas
-- GET /tasks -> Listar tareas (Añadir query params para filtrar)
+- GET /tasks -> Listar tareas (Query params: ?done=&limit=&offset=) done para filtrar por hechas o no hechas, limit para la cantidad de registros y offset para saber desde donde empezar
 - PATCH /tasks/{id} -> Modificar una tarea parcialmente 
 - 
 
 # Anotaciones
 
 - Un model o un DTO no deben tener logicas de negocio
-- el 
+- El DTO solo funciona en la frontera entre el HTTP y la logica interna del servidor

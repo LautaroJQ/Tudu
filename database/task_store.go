@@ -9,6 +9,32 @@ import (
 	"time"
 )
 
+func GetTasks(done *bool) ([]models.Task, error) {
+	FILENAME := os.Getenv("FILENAME")
+
+	fileData, err := os.ReadFile(FILENAME)
+
+	if err != nil {
+		return []models.Task{}, err
+	}
+	var tasks []models.Task
+	err = json.Unmarshal(fileData, &tasks)
+
+	if err != nil {
+		return []models.Task{}, err
+	}
+
+	var filteredTasks []models.Task
+
+	for _, task := range tasks {
+		if done == nil || task.Done == *done {
+			filteredTasks = append(filteredTasks, task)
+		}
+	}
+
+	return filteredTasks, nil
+}
+
 func NewTask(title string) (models.Task, error) {
 
 	fileName := os.Getenv("FILENAME")
@@ -62,7 +88,7 @@ func EditTask(id int, title string) (models.Task, error) {
 	if err != nil {
 		return models.Task{}, errors.New("Cannot open file")
 	}
-
+	//Lee el archivo de guardado
 	tasks := []models.Task{}
 	var modifiedTaskIndex int = -1
 	err = json.Unmarshal(fileData, &tasks)
@@ -70,7 +96,7 @@ func EditTask(id int, title string) (models.Task, error) {
 	if err != nil {
 		return models.Task{}, errors.New("Could not parse data")
 	}
-
+	//Busca coincidencia por Id
 	for i := range tasks {
 		if tasks[i].ID == id {
 			tasks[i].Title = title
@@ -78,11 +104,12 @@ func EditTask(id int, title string) (models.Task, error) {
 			break
 		}
 	}
-
+	//Si no hay coincidencia devuelve error
 	if modifiedTaskIndex == -1 {
 		return models.Task{}, errors.New("Could not find task with that id")
 	}
 
+	//Si hay coincidencia edita y guarda
 	fileData, err = json.MarshalIndent(tasks, "", "\t")
 
 	if err != nil {
@@ -96,31 +123,4 @@ func EditTask(id int, title string) (models.Task, error) {
 	}
 
 	return tasks[modifiedTaskIndex], nil
-
-	// FILENAME := os.Getenv("FILENAME")
-	// task, err := getTask(id)
-
-	// if err != nil {
-	// 	return models.Task{}, err
-	// }
-
-	// task.Title = title
-
-	// data, err := os.ReadFile(FILENAME)
-
-	// if err != nil {
-	// 	return models.Task{}, err
-	// }
-
-	// tasks := []models.Task{}
-
-	// err = json.Unmarshal(data,&tasks)
-
-	// if err != nil {
-	// 	return models.Task{}, err
-	// }
-
-	// for
-
-	// return task, nil
 }
