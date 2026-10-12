@@ -5,6 +5,7 @@ import (
 	"ToDo/dtos"
 	"ToDo/models"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"strconv"
 )
@@ -22,6 +23,11 @@ func DeleteTaskHandler(w http.ResponseWriter, r *http.Request) {
 	dto.Id = id
 
 	err = database.DeleteTasks(dto.Id)
+
+	if errors.Is(err, database.ErrTaskNotFound) {
+		http.Error(w, err.Error(), http.StatusNotFound)
+		return
+	}
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -81,6 +87,7 @@ func GetTasksHandler(w http.ResponseWriter, r *http.Request) {
 
 	if offset >= len(tasks) {
 		json.NewEncoder(w).Encode(models.Task{})
+		return
 	}
 
 	limitParam := r.URL.Query().Get("limit")
@@ -142,10 +149,15 @@ func EditTaskHandler(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(task)
+	err = json.NewEncoder(w).Encode(task)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func CreateTaskHandler(w http.ResponseWriter, r *http.Request) {

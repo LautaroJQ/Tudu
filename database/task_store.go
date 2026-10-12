@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+var ErrTaskNotFound = errors.New("task not found")
+
 func DeleteTasks(id int) error {
 
 	FILENAME := os.Getenv("FILENAME")
@@ -32,6 +34,10 @@ func DeleteTasks(id int) error {
 		if task.ID != id {
 			result = append(result, task)
 		}
+	}
+
+	if len(tasks) == len(result) {
+		return ErrTaskNotFound
 	}
 
 	fileData, err = json.MarshalIndent(result, "", "\t")

@@ -19,7 +19,7 @@ Tener una API REST funcional, que me permita crear notas, modificar su contenido
 todo-api/
 ├── cmd/
 │   └── api/
-│       └── main.go           
+│       └── main.go
 ├── internal/
 │   ├── models/ -> Representacion del objeto
 │   │   └── task.go
