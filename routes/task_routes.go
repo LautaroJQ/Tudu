@@ -11,4 +11,5 @@ func RegisterTaskRoutes(server *http.ServeMux) {
 	server.HandleFunc("PATCH /tasks/{id}", handlers.EditTaskHandler)
 	server.HandleFunc("GET /tasks", handlers.GetTasksHandler)
 	server.HandleFunc("DELETE /tasks/{id}", handlers.DeleteTaskHandler)
+
 }
